@@ -3,16 +3,16 @@ package model;
 import java.util.Objects;
 
 public class Rarity {
-    private Integer rarity_id;
+    private Integer id;
     private String rarity_ds;
 
-    public Rarity(Integer rarity_id, String rarity_ds) {
-        this.rarity_id = rarity_id;
+    public Rarity(Integer id, String rarity_ds) {
+        this.id = id;
         this.rarity_ds = rarity_ds;
     }
 
     public Integer getRarity_id() {
-        return rarity_id;
+        return id;
     }
 
     public String getRarity_ds() {

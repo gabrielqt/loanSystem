@@ -3,20 +3,29 @@ package model;
 import java.util.Objects;
 
 public class Client {
-    private Integer client_id;
+    private Integer id;
     private String nickname;
     private String email;
     private Integer reputation;
 
-    public Client(Integer client_id, String nickname, String email, Integer reputation) {
-        this.client_id = client_id;
+    public Client(){}
+
+    public Client(Integer id, String nickname, String email, Integer reputation) {
+        this.id = id;
+        this.nickname = nickname;
+        this.email = email;
+        this.reputation = reputation;
+    }
+
+    public Client(String nickname, String email, Integer reputation) {
+        this.id = null;
         this.nickname = nickname;
         this.email = email;
         this.reputation = reputation;
     }
 
     public Integer getClient_id() {
-        return client_id;
+        return id;
     }
 
     public String getNickname() {
@@ -31,16 +40,32 @@ public class Client {
         return reputation;
     }
 
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setReputation(Integer reputation) {
+        this.reputation = reputation;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Client client = (Client) o;
-        return Objects.equals(client_id, client.client_id);
+        return Objects.equals(id, client.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(client_id);
+        return Objects.hashCode(id);
     }
 
     @Override

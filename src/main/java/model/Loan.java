@@ -3,23 +3,24 @@ import java.util.Date;
 import java.util.Objects;
 
 public class Loan {
-    private Integer loan_id;
+    private Integer id;
     private Client client;
     private Item item;
     private Date loanDate;
     private Date returnDate;
     private Date expectedReturnDate;
 
-    public Loan(Date expectedReturnDate, Date loanDate, Item item, Client client, Integer loan_id) {
-        this.expectedReturnDate = expectedReturnDate;
-        this.loanDate = loanDate;
-        this.item = item;
+    public Loan(Date expectedReturnDate, Date loanDate, Item item, Client client, Integer id) {
+        this.id = id;
         this.client = client;
-        this.loan_id = loan_id;
+        this.item = item;
+        this.loanDate = loanDate;
+        this.expectedReturnDate = expectedReturnDate;
+
     }
 
-    public Loan(Integer loan_id, Client client, Item item, Date loanDate, Date returnDate, Date expectedReturnDate) {
-        this.loan_id = loan_id;
+    public Loan(Integer id, Client client, Item item, Date loanDate, Date returnDate, Date expectedReturnDate) {
+        this.id = id;
         this.client = client;
         this.item = item;
         this.loanDate = loanDate;
@@ -27,8 +28,16 @@ public class Loan {
         this.expectedReturnDate = expectedReturnDate;
     }
 
+    public Loan(Client client, Item item, Date loanDate, Date expectedReturnDate) {
+        this.id = null;
+        this.client = client;
+        this.item = item;
+        this.loanDate = loanDate;
+        this.expectedReturnDate = expectedReturnDate;
+    }
+
     public Integer getLoan_id() {
-        return loan_id;
+        return id;
     }
 
     public Client getClient() {
@@ -66,7 +75,7 @@ public class Loan {
     @Override
     public String toString() {
         return "Loan{" +
-                "loan_id=" + loan_id +
+                "id=" + id +
                 ", client=" + client +
                 ", item=" + item +
                 ", loanDate=" + loanDate +
