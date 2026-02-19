@@ -6,8 +6,18 @@ public class Rarity {
     private Integer id;
     private String rarity_ds;
 
+    public Rarity(){};
+
     public Rarity(Integer id, String rarity_ds) {
         this.id = id;
+        this.rarity_ds = rarity_ds;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public void setRarity_ds(String rarity_ds) {
         this.rarity_ds = rarity_ds;
     }
 

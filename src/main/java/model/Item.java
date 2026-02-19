@@ -36,7 +36,7 @@ public class Item {
         return available;
     }
 
-    public Rarity getRarity_id() {
+    public Rarity getRarity() {
         return rarity;
     }
 

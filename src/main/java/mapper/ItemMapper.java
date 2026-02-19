@@ -11,7 +11,8 @@ public class ItemMapper {
         i.setId(rs.getInt("id"));
         i.setItem_ds(rs.getString("item_ds"));
         i.setAvailable(rs.getBoolean("available"));
-        
+        i.setRarity(RarityMapper.map(rs));
+
         return i;
     }
 }
