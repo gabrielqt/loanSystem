@@ -24,7 +24,7 @@ public class Item {
         this.rarity = rarity;
     }
 
-    public Integer getItem_id() {
+    public Integer getId() {
         return id;
     }
 
@@ -60,12 +60,12 @@ public class Item {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Item item = (Item) o;
-        return Objects.equals(getItem_id(), item.getItem_id());
+        return Objects.equals(getId(), item.getId());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(getItem_id());
+        return Objects.hashCode(getId());
     }
 
 
