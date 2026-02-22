@@ -8,7 +8,7 @@ public class ItemMapper {
     public static Item map(ResultSet rs) throws SQLException {
         Item i = new Item();
 
-        i.setId(rs.getInt("id"));
+        i.setId(rs.getInt("item_id"));
         i.setItem_ds(rs.getString("item_ds"));
         i.setAvailable(rs.getBoolean("available"));
         i.setRarity(RarityMapper.map(rs));

@@ -18,8 +18,9 @@ public class ItemDaoJDBC implements GenericDao<Item> {
     }
 
     @Override
-    public Item findOne(Item item) throws SQLException {
+    public Item findById(Integer id) throws SQLException {
         String sql = """
+                use loan_db
                 select
                 	i.id as item_id,
                 	i.item_ds, i.available,
@@ -31,14 +32,14 @@ public class ItemDaoJDBC implements GenericDao<Item> {
                                 where i.id = ?
                 """;
 
-        try (PreparedStatement ps = this.conn.prepareStatement(sql)){
-            ps.setInt(1, item.getId());
-            ResultSet rs = ps.executeQuery();
-            if (rs.next()){
-                return ItemMapper.map(rs);
+        try (PreparedStatement ps = this.conn.prepareStatement(sql)) {
+            ps.setInt(1, id);
+            try (ResultSet rs = ps.executeQuery()){
+                if (rs.next()) {
+                    return ItemMapper.map(rs);
+                }
             }
-        } catch (SQLException e){
-            System.out.println("ERRO: " + e.getMessage());
+
         }
         return null;
     }
@@ -66,11 +67,9 @@ public class ItemDaoJDBC implements GenericDao<Item> {
             ps.setInt(3, item.getRarity().getRarity_id());
             ps.setInt(4, item.getId());
             ps.executeUpdate();
+            return item;
         }
-        catch(SQLException e){
-            System.out.println("ERRO: " + e.getMessage());
-        }
-        return item;
+
     }
 
     private Item insert(Item item) throws SQLException {
@@ -89,26 +88,20 @@ public class ItemDaoJDBC implements GenericDao<Item> {
             if (keys.next()) {
                 item.setId(keys.getInt(1));
             }
-            return item;
-        } catch(SQLException e){
-            System.out.println("ERRO: " + e.getMessage());
-            return null;
+            return item; // returns the item with id
         }
 
     }
 
     @Override
-    public Integer deleteOne(Item item) throws SQLException {
+    public Integer deleteById(Integer id) throws SQLException {
         String sql = """
                 delete from
                     Item where id = ?;
                 """;
         try(PreparedStatement ps = conn.prepareStatement(sql)) {
-            ps.setInt(1, item.getId());
+            ps.setInt(1, id);
             return ps.executeUpdate();
-        } catch(SQLException e){
-            System.out.println("ERRO: " + e.getMessage());
-            return null;
         }
     }
 
@@ -126,17 +119,12 @@ public class ItemDaoJDBC implements GenericDao<Item> {
                 """;
 
         List<Item> items = new ArrayList<>();
-        try (PreparedStatement ps = conn.prepareStatement(sql)) {
-            ResultSet rs = ps.executeQuery();
-
+        try (PreparedStatement ps = conn.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
             while (rs.next()) {
                 items.add(ItemMapper.map(rs));
             }
-
             return items;
-        } catch(SQLException e){
-            System.out.println("ERRO: " + e.getMessage());
-            return null;
         }
     }
 }
