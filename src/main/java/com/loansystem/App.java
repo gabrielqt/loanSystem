@@ -3,6 +3,8 @@ import factory.ConnectionFactory;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+
+import model.Item;
 import service.ItemService;
 
 public class App 
@@ -11,8 +13,9 @@ public class App
     {
 
         ItemService itemService = new ItemService();
-        System.out.println(itemService.getItem(15));
-        System.out.println(itemService.getAllItems());
+        System.out.println(itemService.itemIsAvailable(2));
+
+
 
 
     }

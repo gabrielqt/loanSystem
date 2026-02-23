@@ -21,7 +21,7 @@ public class Rarity {
         this.rarity_ds = rarity_ds;
     }
 
-    public Integer getRarity_id() {
+    public Integer getId() {
         return id;
     }
 

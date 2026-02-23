@@ -20,7 +20,6 @@ public class ItemDaoJDBC implements GenericDao<Item> {
     @Override
     public Item findById(Integer id) throws SQLException {
         String sql = """
-                use loan_db
                 select
                 	i.id as item_id,
                 	i.item_ds, i.available,
@@ -64,7 +63,7 @@ public class ItemDaoJDBC implements GenericDao<Item> {
         try (PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setString(1, item.getItem_ds());
             ps.setBoolean(2, item.isAvailable());
-            ps.setInt(3, item.getRarity().getRarity_id());
+            ps.setInt(3, item.getRarity().getId());
             ps.setInt(4, item.getId());
             ps.executeUpdate();
             return item;
@@ -81,7 +80,7 @@ public class ItemDaoJDBC implements GenericDao<Item> {
         try(PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             ps.setString(1, item.getItem_ds());
             ps.setBoolean(2, item.isAvailable());
-            ps.setInt(3, item.getRarity().getRarity_id());
+            ps.setInt(3, item.getRarity().getId());
             ps.executeUpdate();
 
             ResultSet keys = ps.getGeneratedKeys();
