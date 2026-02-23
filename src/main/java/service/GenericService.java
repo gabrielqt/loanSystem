@@ -42,4 +42,13 @@ public class GenericService<T> {
             throw new RuntimeException("ERRO: " + e.getMessage(), e);
         }
     }
+
+    public Integer deleteById(Integer id) {
+        try (Connection conn = ConnectionFactory.getConnection()) {
+            GenericDao<T> dao = daoFactory.create(conn);
+            return dao.deleteById(id);
+        } catch (SQLException e) {
+            throw new RuntimeException("ERRO: " + e.getMessage(), e);
+        }
+    }
 }

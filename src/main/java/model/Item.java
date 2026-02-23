@@ -70,7 +70,8 @@ public class Item {
 
     @Override
     public String toString(){
-        return "Name: " + this.getItem_ds() + "\n" +
+        return "ID:" + this.getId() + "\n" +
+                "Name: " + this.getItem_ds() + "\n" +
                 "Available: " + this.isAvailable() + "\n" +
                 "Rarity: " + this.rarity.getRarity_ds() + "\n" + "\n";
 

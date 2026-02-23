@@ -22,7 +22,7 @@ public class RarityDaoJDBC implements GenericDao<Rarity> {
                 select
                 	r.id as rarity_id,
                 	r.rarity_ds
-                	from rarity i
+                	from rarity r
                         where r.id = ?
                 """;
 
@@ -97,7 +97,7 @@ public class RarityDaoJDBC implements GenericDao<Rarity> {
                 select
                 	r.id as rarity_id,
                 	r.rarity_ds
-                	    from rarity i
+                	    from rarity r
                 """;
 
         List<Rarity> rarities = new ArrayList<>();
