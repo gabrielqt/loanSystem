@@ -24,7 +24,7 @@ public class Client {
         this.reputation = reputation;
     }
 
-    public Integer getClient_id() {
+    public Integer getId() {
         return id;
     }
 
@@ -70,6 +70,6 @@ public class Client {
 
     @Override
     public String toString() {
-        return this.getClient_id() + " | " + this.getNickname();
+        return this.getId() + " | " + this.getNickname();
     }
 }

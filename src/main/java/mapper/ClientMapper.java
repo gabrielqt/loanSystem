@@ -8,7 +8,7 @@ public class ClientMapper{
     public static Client map (ResultSet rs) throws SQLException{
         Client c = new Client();
 
-        c.setId(rs.getInt("id"));
+        c.setId(rs.getInt("cliente_id"));
         c.setNickname(rs.getString("nickname"));
         c.setEmail(rs.getString("email"));
         c.setReputation(rs.getInt("reputation"));
