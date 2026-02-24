@@ -22,7 +22,8 @@ public class ClientDaoJDBC implements GenericDao<Client> {
                 select
                 	c.id as cliente_id,
                 	c.nickname, c.email, c.reputation
-                        where c.cliente_id = ?
+                	from Client c
+                        where c.id = ?
                 """;
 
         try (PreparedStatement ps = this.conn.prepareStatement(sql)) {
@@ -103,6 +104,7 @@ public class ClientDaoJDBC implements GenericDao<Client> {
                 select
                 	c.id as cliente_id,
                 	c.nickname, c.email, c.reputation
+                	from Client c
                 """;
 
         List<Client> clients = new ArrayList<>();
