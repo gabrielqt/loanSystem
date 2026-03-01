@@ -55,7 +55,7 @@ public class Item {
     public void setRarity(Rarity rarity) {
         this.rarity = rarity;
     }
-
+    
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;

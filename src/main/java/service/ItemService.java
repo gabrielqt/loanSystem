@@ -10,7 +10,9 @@ public class ItemService extends GenericService<Item> {
         super(ItemDaoJDBC::new);
     }
 
-    public boolean itemIsAvailable(Integer id){
-        return this.getById(id).isAvailable();
+    public boolean toggleAvailabilityItem(Item item){
+        item.setAvailable(!item.isAvailable());
+        save(item);
+        return item.isAvailable();
     }
 }
